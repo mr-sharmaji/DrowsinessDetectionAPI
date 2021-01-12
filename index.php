@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         $query = "Select * from time LIMIT 10;";
         $result = pg_query($con, $query) or die("Cannot execute query: $query\n");
         while ($row = pg_fetch_row($result)) {
-            $arr_data = ["id" => $row[0] ,"time" => $row[1]];
+            array_push($arr_data, ["id" => $row[0] ,"time" => $row[1]]);
           }
         echo json_encode($arr_data);
     } catch (Exception $e) {

@@ -9,7 +9,11 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         $query = "Select * from heartrate LIMIT 10;";
         $result = pg_query($con, $query) or die("Cannot execute query: $query\n");
         while ($row = pg_fetch_row($result)) {
-            array_push($arr_data, ["id" => $row[0] ,"heartRate" => $row[1]]);
+            $a = array(
+                "id" => $row[0],
+                "heartRate" => $row[1]
+            );
+            array_push($arr_data, $a);
           }
         echo json_encode($arr_data);
     } catch (Exception $e) {

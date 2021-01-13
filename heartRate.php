@@ -6,7 +6,7 @@ $con = pg_connect("host=ec2-54-144-196-35.compute-1.amazonaws.com port=5432 dbna
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
     $arr_data = array();
     try {
-        $query = "Select * from heartrate LIMIT 10;";
+        $query = "Select * from heartrate ORDER BY id LIMIT 10;";
         $result = pg_query($con, $query) or die("Cannot execute query: $query\n");
         while ($row = pg_fetch_row($result)) {
             $a = array(

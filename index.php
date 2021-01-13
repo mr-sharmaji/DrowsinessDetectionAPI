@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     try {
         $dataTime = $data['time'];
         $query = "INSERT INTO time(created_on) values ('$dataTime');";
-        $result = pq_query($con, $query);
+        $result = pg_query($con, $query);
         if ($result) {
             echo json_encode(array('data'=>"Data Successfully Added"));
         } else
